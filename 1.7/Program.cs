@@ -12,16 +12,16 @@ internal class Program
         //(Swap) Se dau doua variabile numerice a si b ale carori valori sunt date de intrare. Se cere sa se inverseze valorile lor. 
 
         Console.WriteLine("Introdu un numar a : ");
-        int x = int.Parse(Console.ReadLine());
+        int a = int.Parse(Console.ReadLine());
 
         Console.WriteLine("Introdu un numar b :");
-        int y = int.Parse(Console.ReadLine());
+        int b = int.Parse(Console.ReadLine());
+        int c = 0;
 
-        int a = 2;
-        int c;
+        c = a;
+        a = b;
+        b = c;
 
-
-        int b = ++a;
         Console.WriteLine($" Acum a = {a} si b = {b}");
 
 

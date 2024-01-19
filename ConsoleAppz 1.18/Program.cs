@@ -12,65 +12,41 @@ internal class Program
         // Afisati descompunerea in factori primi ai unui numar n.  De ex. pentru n = 1176 afisati 2^3 x 3^1 x 7^2. 
 
 
-        Console.WriteLine("Introdu un numar a : ");
-        int a = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar b : ");
-        int b = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar c : ");
-        int c = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar d : ");
-        int d = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar e : ");
-        int e = int.Parse(Console.ReadLine());
-
-        for (int i = 1; i <= 4; i++)
+        static void Main()
         {
-            if (a > b)
-            {
-                int temp = a;
-                a = b;
-                b = temp;
-            }
+            Console.WriteLine("Introduceti un numar:");
+            int n = int.Parse(Console.ReadLine());
 
-            if (b > c)
-            {
-                int temp = b;
-                b = c;
-                c = temp;
-            }
-
-            if (c > d)
-            {
-                int temp = c;
-                c = d;
-                d = temp;
-            }
-
-            if (d > e)
-            {
-                int temp = d;
-                d = e;
-                e = temp;
-            }
+            Console.WriteLine($"Descompunerea in factori primi a numarului {n} este:");
+            AfisareDescompunereFactoriPrimi(n);
         }
 
-        Console.WriteLine($"Ordinea cresctoare este {a}, {b}, {c}, {d}, {e}.");
+        static void AfisareDescompunereFactoriPrimi(int numar)
+        {
+            for (int i = 2; i <= numar; i++)
+            {
+                int putere = 0;
 
+                while (numar % i == 0)
+                {
+                    putere++;
+                    numar /= i;
+                }
 
+                if (putere > 0)
+                {
+                    Console.Write($"{i}^{putere} ");
 
-
-
-
-
-
+                    if (numar > 1)
+                    {
+                        Console.Write("x ");
+                    }
+                }
+            }
+        }
     }
-
-
-}
+}           
+           
 
 
 

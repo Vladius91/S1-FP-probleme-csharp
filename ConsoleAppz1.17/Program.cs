@@ -9,61 +9,36 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        // Se dau 5 numere. Sa se afiseze in ordine crescatoare. (nu folositi tablouri)
+        Console.WriteLine("Introduceti doua numere:");
+        int num1 = int.Parse(Console.ReadLine());
+        int num2 = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Introdu un numar a : ");
-        int a = int.Parse(Console.ReadLine());
+        int cmmd = CalculCMMD(num1, num2);
+        int cmmmc = CalculCMMMC(num1, num2, cmmd);
 
-        Console.WriteLine("Introdu un numar b : ");
-        int b = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar c : ");
-        int c = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar d : ");
-        int d = int.Parse(Console.ReadLine());
-
-        Console.WriteLine("Introdu un numar e : ");
-        int e = int.Parse(Console.ReadLine());
-
-        for (int i = 1; i <= 4; i++)
-        {
-            if (a > b)
-            {
-                int temp = a;
-                a = b;
-                b = temp;
-            }
-
-            if (b > c)
-            {
-                int temp = b;
-                b = c;
-                c = temp;
-            }
-
-            if (c > d)
-            {
-                int temp = c;
-                c = d;
-                d = temp;
-            }
-
-            if (d > e)
-            {
-                int temp = d;
-                d = e;
-                e = temp;
-            }
-        }
-
-        Console.WriteLine($"Ordinea cresctoare este {a}, {b}, {c}, {d}, {e}.");
-s
+        Console.WriteLine($"Cel mai mare divizor comun al celor doua numere este: {cmmd}");
+        Console.WriteLine($"Cel mai mic multiplu comun al celor doua numere este: {cmmmc}");
     }
 
+    // Algoritmul lui Euclid pentru calcularea celui mai mare divizor comun
+    static int CalculCMMD(int a, int b)
+    {
+        while (b != 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 
-}
+    // Calcularea celui mai mic multiplu comun folosind relatia CMMD * CMMMC = |a * b|
+    static int CalculCMMMC(int a, int b, int cmmd)
+    {
+        return Math.Abs(a * b) / cmmd;
 
+    }
+    }
 
 
 
